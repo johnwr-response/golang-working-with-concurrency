@@ -52,8 +52,13 @@
   winget install -e --id GnuWin32.Make
   ```
 
-
 ### Asking for help
+
+
+
+
+
+
 ### Mistakes: we all make them
 ## Section: Goroutines, the go keyword, and WaitGroups
 ### What we'll cover in this section
