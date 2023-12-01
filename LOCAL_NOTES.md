@@ -98,14 +98,33 @@
 
 ### Solution to Challenge
 
-
-
-
-
-
-
 ## Section: Race conditions, Mutexes, and an Introduction to Channels
 ### What we'll cover in this section
+#### sync.Mutex
+- Mutex (mutual exclusion) - allows us to deal with race conditions
+- Relatively simple to use
+- Dealing with shared resources and concurrent/parallel goroutines
+- Lock/Unlock
+- We can test for race conditions when running code, or when testing it
+
+#### Race Conditions
+- Race conditions occur when multiple GoRoutines try to access the same data
+- Can be difficult to spot when reading code
+- Go allows us to check for them when running a program, or when testing our code with go test 
+
+#### Channels
+- Channels are a means of having GoRoutines share data
+- They can talk to each other both ways, you can have Unidirectional and Bidirectional channels
+- You can have as many channels as you want
+- This is Go's philosophy of having things share memory by communicating, rather than communicating by sharing memory
+- Introducing a classic computer science problem: The Producer/Consumer problem
+
+
+
+
+
+
+
 ### 
 ## Section: A Classic Problem: The Dining Philosophers
 ### What we'll cover in this section
