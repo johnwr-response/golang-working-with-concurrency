@@ -141,7 +141,7 @@
 ### Adding sync.Mutex to our code
 - DO NOT COPY A MUTEX ONCE IT HAS BEEN CREATED!
 
-
+### Testing for race conditions
 
 
 
