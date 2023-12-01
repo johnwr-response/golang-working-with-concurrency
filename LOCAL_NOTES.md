@@ -32,8 +32,22 @@
   winget install -e --id GoLang.Go
   ```
 
-
 ### Installing Visual Studio Code
+- Setup for windows:
+  ```powershell
+  winget install -e --id Microsoft.VisualStudioCode
+  ```
+- You want to make sure all the `Go: Install/Update Tools` are enabled
+- Suggestion: Also install extension: `gotemplate-syntax`
+
+### JetBrains Toolbox (GoLand)
+- Setup for windows:
+  ```powershell
+  winget install -e --id JetBrains.Toolbox
+  ```
+
+
+
 ### Installing Make
 ### Asking for help
 ### Mistakes: we all make them
