@@ -85,8 +85,15 @@
 - Wait Groups are the first and probably the easiest way of dealing with concurrency 
 - Note: Defer means that whatever comes after the `defer` keyword, do not execute it until the current function exits
 
+### Writing tests with WaitGroups
+- Note! If mismatch between number added to Wait Group and actual Goroutines spawned, an error will be shown:
+  - fatal error: all goroutines are asleep - deadlock!
+- An important point when creating tests for functions that are expected to run in the background is to rin it in the background also in the test 
 
-### 
+
+
+
+
 ## Section: Race conditions, Mutexes, and an Introduction to Channels
 ### What we'll cover in this section
 ### 
