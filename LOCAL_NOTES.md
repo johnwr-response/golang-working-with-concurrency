@@ -55,12 +55,20 @@
 ### Asking for help
 ### Mistakes: we all make them
 
-
-
-
-
 ## Section: Goroutines, the go keyword, and WaitGroups
 ### What we'll cover in this section
+- GoRoutines
+  - Running things in the background, or concurrently
+  - Incredibly simple to use
+  - Create problems
+  - Several ways to solve these problems
+
+
+
+
+
+
+
 ### 
 ## Section: Race conditions, Mutexes, and an Introduction to Channels
 ### What we'll cover in this section
