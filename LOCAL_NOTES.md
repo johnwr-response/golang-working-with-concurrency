@@ -96,7 +96,7 @@
   - implement WaitGroups so that the program runs properly and prints out the different messages consistently in order
   - include tests for all three functions: `updateMessage()`, `printMessage()`, and `main()`
 
-
+### Solution to Challenge
 
 
 
