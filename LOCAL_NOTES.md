@@ -27,6 +27,12 @@
 
 ### A bit about me
 ### Installing Go
+- Setup for windows:
+  ```powershell
+  winget install -e --id GoLang.Go
+  ```
+
+
 ### Installing Visual Studio Code
 ### Installing Make
 ### Asking for help
