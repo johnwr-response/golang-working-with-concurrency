@@ -46,9 +46,13 @@
   winget install -e --id JetBrains.Toolbox
   ```
 
-
-
 ### Installing Make
+- Setup for windows:
+  ```powershell
+  winget install -e --id GnuWin32.Make
+  ```
+
+
 ### Asking for help
 ### Mistakes: we all make them
 ## Section: Goroutines, the go keyword, and WaitGroups
