@@ -80,6 +80,11 @@
   - In this example, the program executes and runs through so quickly that the new thread does not start in time.
   - Using sleeps to fix that should result in you looking for a new job!
 
+### WaitGroups to the rescue
+- Note! It doesn't matter which order you spun the go routines, the Go scheduler will execute them in its own order
+- Wait Groups are the first and probably the easiest way of dealing with concurrency 
+- Note: Defer means that whatever comes after the `defer` keyword, do not execute it until the current function exits
+
 
 ### 
 ## Section: Race conditions, Mutexes, and an Introduction to Channels
