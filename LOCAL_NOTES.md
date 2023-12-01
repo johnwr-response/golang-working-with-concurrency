@@ -119,13 +119,32 @@
 - This is Go's philosophy of having things share memory by communicating, rather than communicating by sharing memory
 - Introducing a classic computer science problem: The Producer/Consumer problem
 
+### Race Conditions: an example
+- To run the race condition check mentioned, you have to install a C compiler first
+  - Download [TDM-GCC](https://jmeubank.github.io/tdm-gcc/download/)
+  - Restart all Powershell windows, including in IDE
+- Create folder and init a main module
+  ```powershell
+  $incNum = "02"
+  $folderName = "mutex-example"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  ```
+- To test for race conditions, use option `-race` when running your program 
+  ```powershell
+  go run -race .
+  ```
 
 
 
 
 
 
-### 
+
+
 ## Section: A Classic Problem: The Dining Philosophers
 ### What we'll cover in this section
 ### 
