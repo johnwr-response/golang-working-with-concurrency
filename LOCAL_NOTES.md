@@ -90,6 +90,16 @@
   - fatal error: all goroutines are asleep - deadlock!
 - An important point when creating tests for functions that are expected to run in the background is to rin it in the background also in the test 
 
+### Challenge: working with WaitGroup
+- Modify the code in [challenge-1](challenge-1/main.go) to
+  - call the function `updateMessage()` as goroutines
+  - implement WaitGroups so that the program runs properly and prints out the different messages consistently in order
+  - include tests for all three functions: `updateMessage()`, `printMessage()`, and `main()`
+
+
+
+
+
 
 
 
