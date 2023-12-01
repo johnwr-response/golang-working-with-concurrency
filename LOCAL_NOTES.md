@@ -143,6 +143,13 @@
 
 ### Testing for race conditions
 ### A more complex example
+### Writing a test for our weekly income project
+- NOTE! This test sometimes just hangs on windows computers. Just move on, this is not important!
+
+
+
+
+
 
 
 
