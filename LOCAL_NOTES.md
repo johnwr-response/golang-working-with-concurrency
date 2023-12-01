@@ -63,10 +63,22 @@
   - Create problems
   - Several ways to solve these problems
 
+### Creating Goroutines and identifying a problem
+- First create folder and init a main module
+  ```powershell
+  $incNum = "01"
+  $folderName = "first-example"
 
-
-
-
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  ```
+- NOTE! Every Go program has a Goroutine, the main() function itself is actually a Goroutine 
+- Goroutines are in effect very light threads that are run by the Go scheduler behind the scenes
+- The keyword `Go` tells the compiler to execute the code in its own Goroutine
+  - In this example, the program executes and runs through so quickly that the new thread does not start in time.
+  - Using sleeps to fix that should result in you looking for a new job!
 
 
 ### 
