@@ -11,27 +11,35 @@ const NumberOfPizzas = 10
 
 var pizzasMade, pizzasFailed, totalPizzas int
 
+// Producer is a type of struct that holds two channels:
+// One for pizzas, with all information for a given pizza, including whether it was made successfully
+// Another to handle end of processing (when we quit the channel)
 type Producer struct {
 	data chan PizzaOrder
 	quit chan chan error
 }
 
+// PizzaOrder is a type of struct that describes a given pizza order. It has the order number, a message indicating
+// what happened to the order and a boolean indication the order was successfully completed
 type PizzaOrder struct {
 	pizzaNumber int
 	message     string
 	success     bool
 }
 
+// Close is a method of closing the channel when we are done with it. (I.e. something is pushed to the quit channel)
 func (p *Producer) Close() error {
 	ch := make(chan error)
 	p.quit <- ch
 	return <-ch // nil if channels is closed successfully, and error is made available if not closed successfully
 }
 
+// makePizza attempts to make a pizza. We generate a random number from 1-12, and put in two cases where we can't make
+// the pizza in time. Otherwise, we make the pizza without issue. To make things interesting, each pizza will take a
+// different length of time to produce (some pizzas are harder than others).
 func makePizza(pizzaNumber int) *PizzaOrder {
 	pizzaNumber++
 	if pizzaNumber <= NumberOfPizzas {
-		//
 		delay := rand.Intn(5) + 1
 		fmt.Printf("Received order #%d!\n", pizzaNumber)
 
@@ -69,6 +77,10 @@ func makePizza(pizzaNumber int) *PizzaOrder {
 	return &PizzaOrder{pizzaNumber: pizzaNumber}
 }
 
+// pizzeria is a GoRoutine that runs in the background and calls makePizza to try to make one order each time it
+// iterates through the for loop. It executes until it receives something on the quit channel. The quit channel does
+// not receive anything until the consumer sends it (when the number of orders is greater than or equal to the
+// constant NumberOfPizzas).
 func pizzeria(pizzaMaker *Producer) {
 	// keep track of which pizza we are making
 	var i = 0
@@ -77,12 +89,25 @@ func pizzeria(pizzaMaker *Producer) {
 
 	// try to make pizzas
 	for {
-		currentPizzas := makePizza(i)
+		currentPizza := makePizza(i)
+		if currentPizza != nil {
+			//i := currentPizza.pizzaNumber
+			select {
+			// We have tried to make a pizza (we sent something to the data channel)
+			case pizzaMaker.data <- *currentPizza:
+			case quitChan := <-pizzaMaker.quit:
+				// close channels
+				close(pizzaMaker.data)
+				close(quitChan)
+				return
+			}
+		}
 		// try to make a pizza
 		// desicion structure (selection statement)
 	}
 }
 
+// main TODO
 func main() {
 	// seed the random number generator
 	// As of Go 1.20, there is no reason to call Seed with a random value.

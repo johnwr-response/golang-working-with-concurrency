@@ -176,8 +176,10 @@
 - THE GOLDEN RULE OF CHANNELS: When finished with it; close it!
 
 ### Making a pizza: the makePizza function
-
-
+### Finishing up the Producer code
+- Introducing the `select` statement:
+  - A `select` statement is ***only*** useful for `channels`
+  - It is very similar to a `switch` statement
 
 
 
