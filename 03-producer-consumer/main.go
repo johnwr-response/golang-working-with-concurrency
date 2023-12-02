@@ -113,7 +113,7 @@ func main() {
 
 	// print out a message
 	color.Cyan("The Pizzeria is open for business!")
-	color.Cyan("__________________________________")
+	color.Cyan("----------------------------------")
 
 	// create a producer
 	pizzaJob := &Producer{
@@ -136,7 +136,7 @@ func main() {
 			}
 		} else {
 			color.Cyan("Done making pizzas...")
-			color.Cyan("_____________________")
+			color.Cyan("---------------------")
 			err := pizzaJob.Close()
 			if err != nil {
 				color.Red("*** Error closing channel!", err)
@@ -145,5 +145,22 @@ func main() {
 	}
 
 	// print out the ending message
+	color.Cyan("-----------------")
+	color.Cyan("Done for the day.")
+
+	color.Cyan("We made %d pizzas, but failed to make %d pizzas, with %d attempts in total", pizzasMade, pizzasFailed, totalPizzas)
+	switch {
+	case pizzasFailed > 9:
+		color.Red("It was an awful day...")
+	case pizzasFailed >= 6:
+		color.Red("It was not a very good day...")
+	case pizzasFailed >= 4:
+		color.Yellow("It was an ok day...")
+	case pizzasFailed >= 2:
+		color.Yellow("It was a pretty good day!")
+	default:
+		color.Green("It was a great day!")
+
+	}
 
 }
