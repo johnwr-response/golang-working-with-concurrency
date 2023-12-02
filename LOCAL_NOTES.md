@@ -144,11 +144,28 @@
 ### Testing for race conditions
 ### A more complex example
 ### Writing a test for our weekly income project
-- NOTE! This test sometimes just hangs on windows computers. Just move on, this is not important!
+- NOTE! This test sometimes just hangs on Windows computers. Just move on, this is not important!
 
+### Producer/Consumer - Using Channels for the first time
+- Introducing the [Producer-consumer](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem) problem (bounded-buffer problem)
+- Create folder and init a main module
+  ```powershell
+  $incNum = "03"
+  $folderName = "producer-consumer"
 
-
-
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
+- This version of the Producer-consumer problem is based on a pizzeria
+  - We have a pizzeria which have som people who make pizzas `The Producer`
+  - We have one or more customers who place orders `The Consumer` 
+  - A number of things can go wrong, and also the customers should get their Pizzas
+  - The goal is to write a solution to the Producer-consumer problem
+  - This problem can be quite complex as we will see here
+- Introducing Channels that allows GoRoutines to exchange data to and from other GoRoutines
 
 
 
