@@ -85,16 +85,16 @@ func pizzeria(pizzaMaker *Producer) {
 	// keep track of which pizza we are making
 	var i = 0
 
-	// run forever or until we receive a quit notification from the quit channel in producer type
-
-	// try to make pizzas
+	// this loop will continue to execute, trying to make pizzas, until the quit channel receives something
 	for {
 		currentPizza := makePizza(i)
 		if currentPizza != nil {
-			//i := currentPizza.pizzaNumber
+			i = currentPizza.pizzaNumber
 			select {
 			// We have tried to make a pizza (we sent something to the data channel)
 			case pizzaMaker.data <- *currentPizza:
+
+			// we want to quit, so send pizzaMaker.quit to the quitChan (a chan error)
 			case quitChan := <-pizzaMaker.quit:
 				// close channels
 				close(pizzaMaker.data)
@@ -102,12 +102,10 @@ func pizzeria(pizzaMaker *Producer) {
 				return
 			}
 		}
-		// try to make a pizza
-		// desicion structure (selection statement)
 	}
 }
 
-// main TODO
+// main something, something
 func main() {
 	// seed the random number generator
 	// As of Go 1.20, there is no reason to call Seed with a random value.
@@ -127,6 +125,24 @@ func main() {
 	go pizzeria(pizzaJob)
 
 	// create and run consumer
+	for i := range pizzaJob.data {
+		if i.pizzaNumber <= NumberOfPizzas {
+			if i.success {
+				color.Green(i.message)
+				color.Green("Order #%d is out for delivery", i.pizzaNumber)
+			} else {
+				color.Red(i.message)
+				color.Red("The customer is really mad!")
+			}
+		} else {
+			color.Cyan("Done making pizzas...")
+			color.Cyan("_____________________")
+			err := pizzaJob.Close()
+			if err != nil {
+				color.Red("*** Error closing channel!", err)
+			}
+		}
+	}
 
 	// print out the ending message
 

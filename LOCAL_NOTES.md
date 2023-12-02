@@ -181,6 +181,11 @@
   - A `select` statement is ***only*** useful for `channels`
   - It is very similar to a `switch` statement
 
+### Creating and running the consumer: ordering a pizza
+
+
+
+
 
 
 
