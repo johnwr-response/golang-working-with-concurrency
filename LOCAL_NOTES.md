@@ -184,17 +184,23 @@
 ### Creating and running the consumer: ordering a pizza
 ### Finishing up our Producer/Consumer project
 
-
-
-
-
-
-
-
-
-
 ## Section: A Classic Problem: The Dining Philosophers
 ### What we'll cover in this section
+- Introducing the [The Dining Philosophers](https://en.wikipedia.org/wiki/Dining_philosophers_problem) problem
+
+#### The Dining Philosophers
+- A classic computer science problem introduced by Dijkstra in 1965
+- Five philosophers live in a house together, and they always dine together at the same table, sitting in the same place
+- They always eat a special kind of spaghetti which requires two forks
+- There are two and only two forks next to each plate, which means that no two neighbours can be eating at the same time
+- How do you write a program that ensures that no philosopher will starve
+
+![Illustration](https://upload.wikimedia.org/wikipedia/commons/7/7b/An_illustration_of_the_dining_philosophers_problem.png)
+
+
+
+
+
 ### 
 ## Section: Channels, and another classic: The Sleeping Barber problem
 ### What we'll cover in this section
