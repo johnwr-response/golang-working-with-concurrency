@@ -175,6 +175,15 @@
 - NOTE: As of Go 1.20, seed is deprecated. There is no reason to call Seed with a random value.
 - THE GOLDEN RULE OF CHANNELS: When finished with it; close it!
 
+### Making a pizza: the makePizza function
+
+
+
+
+
+
+
+
 
 
 ## Section: A Classic Problem: The Dining Philosophers
