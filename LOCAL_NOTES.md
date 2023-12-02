@@ -167,6 +167,13 @@
   - This problem can be quite complex as we will see here
 - Introducing Channels that allows GoRoutines to exchange data to and from other GoRoutines
 
+### Getting started with the Producer - the pizzeria function
+- Introducing a simple package to use colorized outputs: [color](https://github.com/fatih/color)
+  ```powershell
+  go get github.com/fatih/color
+  ```
+- NOTE: As of Go 1.20, seed is deprecated. There is no reason to call Seed with a random value.
+- THE GOLDEN RULE OF CHANNELS: When finished with it; close it!
 
 
 
