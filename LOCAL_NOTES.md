@@ -272,6 +272,22 @@
   ```
 - If there are more than one matches to a select statement, it chooses one of them randomly
 
+### Buffered Channels
+- Create folder and init a main module
+  ```powershell
+  $incNum = "07"
+  $folderName = "buffered-channels"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
+- Unbuffered channels take one message at a time
+- Buffered channels take x number of messages at a time
+
+
 
 
 
