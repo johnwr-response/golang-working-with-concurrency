@@ -216,8 +216,8 @@
 - Logical Race Conditions are not detected by the `-race` flag 
 - If we make sure that we always get a lock on the lower numbered fork first, we will never run into that problem
 
-
-
+### Challenge: Printing out the order in which the meal is finished
+- At the end, print out the order in which the diners finished the meal.
 
 
 
