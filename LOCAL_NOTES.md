@@ -258,13 +258,25 @@
 - To mark a channel as receive only, define the channel as `<-chan`
 - To mark a channel as send only, define the channel as `chan<-`
 
+### The select statement
+- Create folder and init a main module
+  ```powershell
+  $incNum = "06"
+  $folderName = "channel-select"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
+- If there are more than one matches to a select statement, it chooses one of them randomly
 
 
 
 
 
 
-### 
 ## Section: Final Project - Building a Subscription Service
 ### What we'll cover in this section
 ### 
