@@ -308,7 +308,7 @@
 
 ### Adding a Barber
 ### Starting the barbershop as a GoRoutine
-
+### Sending clients to the shop
 
 
 
