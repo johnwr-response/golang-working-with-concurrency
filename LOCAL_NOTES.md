@@ -210,6 +210,12 @@
   git add .
   ```
 
+### Implementing the diningProblem logic
+- What makes this a fun problem to solve is the possible Logical Race Condition here. (Like is everyone takes their left fork first)
+- We need to make sure that two people does not take the wrong fork.
+- Logical Race Conditions are not detected by the `-race` flag 
+- If we make sure that we always get a lock on the lower numbered fork first, we will never run into that problem
+
 
 
 

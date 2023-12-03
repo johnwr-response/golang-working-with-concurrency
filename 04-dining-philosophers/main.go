@@ -39,8 +39,8 @@ var sleepTime = 1 * time.Second
 
 func main() {
 	// print out a welcome message
-	fmt.Println("Dining Philosopers problem")
-	fmt.Println("--------------------------")
+	fmt.Println("Dining Philosophers problem")
+	fmt.Println("---------------------------")
 	fmt.Println("The table is empty.")
 
 	// start the meal
@@ -52,28 +52,75 @@ func main() {
 }
 
 func dine() {
+	eatTime = 0 * time.Second
+	sleepTime = 0 * time.Second
+	thinkTime = 0 * time.Second
+
+	// wg is the WaitGroup that keeps track of how many philosophers are still at the table. When it reaches zero,
+	// everyone is finished eating and has left. We add 5 (the number of philosophers) to this wait group
 	wg := &sync.WaitGroup{}
 	wg.Add(len(philosophers))
 
+	// We want everyone to be seated before they start eating, so create a WaitGroup for that and set it to 5.
 	seated := &sync.WaitGroup{}
 	seated.Add(len(philosophers))
 
-	// forks is a map of all five forks
+	// forks is a map of all five forks. Forks are assigned using the fields leftFork and rightFork in the Philosopher
+	// type. Each fork then, can be found using the index (an integer), and each fork has a unique mutex.
 	var forks = make(map[int]*sync.Mutex)
 	for i := 0; i < len(philosophers); i++ {
 		forks[i] = &sync.Mutex{}
 	}
 
-	// start the meal.
+	// Start the meal by iterating through our slice of Philosophers.
 	for i := 0; i < len(philosophers); i++ {
 		// fire off a GoRoutine for the current philosopher
 		go diningProblem(philosophers[i], wg, forks, seated)
 	}
 
+	// wait for the philosophers to finish. This blocks until the wait group is 0
 	wg.Wait()
 }
 
+// diningProblem is the function fired off as a GoRoutine for each of our philosophers. It takes one philosopher, our
+// WaitGroup to determine when everyone is done, a map containing the Mutexes for every fork on the table, and another
+// WaitGroup used to pause execution of every instance of this GoRoutine until everyone is seated at the table.
 func diningProblem(philosopher Philosopher, wg *sync.WaitGroup, forks map[int]*sync.Mutex, seated *sync.WaitGroup) {
 	defer wg.Done()
 
+	// seat the philosopher at the table
+	fmt.Printf("%s is seated at the table.\n", philosopher.name)
+	seated.Done()
+	seated.Wait()
+
+	// eat three times
+	for i := hunger; i > 0; i-- {
+		// get a lock on both forks
+
+		// we use this check to avoid the logical race condition
+		if philosopher.leftFork > philosopher.rightFork {
+			forks[philosopher.rightFork].Lock()
+			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
+			forks[philosopher.leftFork].Lock()
+			fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
+		} else {
+			forks[philosopher.leftFork].Lock()
+			fmt.Printf("\t%s takes the left fork.\n", philosopher.name)
+			forks[philosopher.rightFork].Lock()
+			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
+		}
+
+		fmt.Printf("\t%s has both forks and is eating.\n", philosopher.name)
+		time.Sleep(eatTime)
+
+		fmt.Printf("\t%s is thinking.\n", philosopher.name)
+		time.Sleep(thinkTime)
+
+		forks[philosopher.leftFork].Unlock()
+		forks[philosopher.rightFork].Unlock()
+
+		fmt.Printf("\t%s put down the forks.\n", philosopher.name)
+	}
+	fmt.Println(philosopher.name, "is satisfied.")
+	fmt.Println(philosopher.name, "left the table.")
 }
