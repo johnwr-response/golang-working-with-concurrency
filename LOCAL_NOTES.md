@@ -325,10 +325,37 @@
 - A fictitious service that allows people to buy a subscription
 - This section sets up the web application
 
+### Setting up a simple web application
+- Create folder and init a main module
+  ```powershell
+  $incNum = "09"
+  $folderName = "final-project"
+
+  md $incNum-$folderName\cmd\web
+  cd $incNum-$folderName
+  go mod init $folderName
+  cd cmd\web
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  cd ..\..
+  git add .
+  ```
+- Adding some packages to use
+  ```powershell
+  go get github.com/jackc/pgconn
+  go get github.com/jackc/pgx/v4
+  go get github.com/jackc/pgx/v4/stdlib
+  go get github.com/alexedwards/scs/v2
+  go get github.com/alexedwards/scs/redisstore
+  go get github.com/go-chi/chi/v5
+  go get github.com/go-chi/chi/v5/middleware
+  ```
 
 
 
-### 
+
+
+
+
 ## Section: Sending Email Concurrently
 ### What we'll cover in this section
 ### 
