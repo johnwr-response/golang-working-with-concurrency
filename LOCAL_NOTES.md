@@ -287,6 +287,19 @@
 - Unbuffered channels take one message at a time
 - Buffered channels take x number of messages at a time
 
+### Getting started with the Sleeping Barber project
+- Create folder and init a main module
+  ```powershell
+  $incNum = "08"
+  $folderName = "sleeping-barber"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
+
 
 
 
