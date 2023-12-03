@@ -360,6 +360,11 @@
 - Also setup a database client (if needed)
   - [Beekeeper Studio (Community Edition)](https://github.com/beekeeper-studio/beekeeper-studio)
 
+### Adding postgres
+
+
+
+
 
 
 
