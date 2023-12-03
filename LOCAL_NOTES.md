@@ -309,6 +309,14 @@
 ### Adding a Barber
 ### Starting the barbershop as a GoRoutine
 ### Sending clients to the shop
+### Trying things out
+  ```powershell
+  go run .
+  go run -race .
+  ```
+- Problem solved with no mutexes, no WaitGroups, only channels. Share memory by communicating
+
+
 
 
 
