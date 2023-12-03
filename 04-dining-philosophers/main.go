@@ -32,16 +32,20 @@ var philosophers = []Philosopher{
 }
 
 // define some variables
-var hunger = 3 // how many times does s person eat?
-var eatTime = 1 * time.Second
-var thinkTime = 3 * time.Second
-var sleepTime = 1 * time.Second
+var hunger = 3                  // how many times does s philosoper eat?
+var eatTime = 1 * time.Second   // how long it takes to eat
+var thinkTime = 3 * time.Second // how long a philosopher thinks
+var sleepTime = 1 * time.Second // how long to wait when printing things out
+var orderMutex sync.Mutex       // a mutex for the slice orderFinished
+var orderFinished []string      // the order of which philosophers finish dining and leave
 
 func main() {
 	// print out a welcome message
 	fmt.Println("Dining Philosophers problem")
 	fmt.Println("---------------------------")
 	fmt.Println("The table is empty.")
+
+	time.Sleep(sleepTime)
 
 	// start the meal
 	dine()
@@ -80,6 +84,8 @@ func dine() {
 
 	// wait for the philosophers to finish. This blocks until the wait group is 0
 	wg.Wait()
+
+	fmt.Printf("The order the philosophers finished: %v\n", orderFinished)
 }
 
 // diningProblem is the function fired off as a GoRoutine for each of our philosophers. It takes one philosopher, our
@@ -90,14 +96,19 @@ func diningProblem(philosopher Philosopher, wg *sync.WaitGroup, forks map[int]*s
 
 	// seat the philosopher at the table
 	fmt.Printf("%s is seated at the table.\n", philosopher.name)
+
+	// decrement the seated WaitGroup by one
 	seated.Done()
+
+	// wait until everyone is seated
 	seated.Wait()
 
-	// eat three times
+	// have this philosopher eatTime and thinkTime "hunger" times (3)
 	for i := hunger; i > 0; i-- {
-		// get a lock on both forks
-
-		// we use this check to avoid the logical race condition
+		// Get a lock on the left and right forks. We have to choose the lower numbered fork first in order to avoid a
+		// logical race condition, which is not detected by the -race flag in tests. If we don't do this, we have the
+		// potential for a deadlock since two philosophers will wait endlessly for the same fork. Note that the
+		// GoRoutine will block (pause) until it gets a lock on both the right and the left forks.
 		if philosopher.leftFork > philosopher.rightFork {
 			forks[philosopher.rightFork].Lock()
 			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
@@ -110,17 +121,26 @@ func diningProblem(philosopher Philosopher, wg *sync.WaitGroup, forks map[int]*s
 			fmt.Printf("\t%s takes the right fork.\n", philosopher.name)
 		}
 
+		// by the time we get to this line, the philosopher has a lock (mutex) on both forks.
 		fmt.Printf("\t%s has both forks and is eating.\n", philosopher.name)
 		time.Sleep(eatTime)
 
+		// the philosopher starts to think, but does not drop the forks yet.
 		fmt.Printf("\t%s is thinking.\n", philosopher.name)
 		time.Sleep(thinkTime)
 
+		// Unlock the mutexes for both forks.
 		forks[philosopher.leftFork].Unlock()
 		forks[philosopher.rightFork].Unlock()
 
 		fmt.Printf("\t%s put down the forks.\n", philosopher.name)
 	}
+
+	//The philosopher has finished eating, so print out a message
 	fmt.Println(philosopher.name, "is satisfied.")
 	fmt.Println(philosopher.name, "left the table.")
+
+	orderMutex.Lock()
+	orderFinished = append(orderFinished, philosopher.name)
+	orderMutex.Unlock()
 }
