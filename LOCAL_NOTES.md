@@ -242,6 +242,21 @@
 - If the barber is busy, the client takes a seat and waits for his or her turn
 - Once the shop closes, no more clients are allowed in, but the barber has to stay until everyone who is waiting gets their haircut
 
+### Introduction to channels
+- Create folder and init a main module
+  ```powershell
+  $incNum = "05"
+  $folderName = "simple-channels"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
+- To mark a channel as receive and send, define the channel as `chan`
+- To mark a channel as receive only, define the channel as `<-chan`
+- To mark a channel as send only, define the channel as `chan<-`
 
 
 
