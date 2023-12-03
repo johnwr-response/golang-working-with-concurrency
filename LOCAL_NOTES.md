@@ -197,11 +197,25 @@
 
 ![Illustration](https://upload.wikimedia.org/wikipedia/commons/7/7b/An_illustration_of_the_dining_philosophers_problem.png)
 
+### Getting started with the problem
+- Create folder and init a main module
+  ```powershell
+  $incNum = "04"
+  $folderName = "dining-philosophers"
+
+  md $incNum-$folderName
+  cd $incNum-$folderName
+  go mod init $folderName
+  ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
+  git add .
+  ```
 
 
 
 
-### 
+
+
+
 ## Section: Channels, and another classic: The Sleeping Barber problem
 ### What we'll cover in this section
 ### 
