@@ -307,7 +307,7 @@
   ```
 
 ### Adding a Barber
-
+### Starting the barbershop as a GoRoutine
 
 
 

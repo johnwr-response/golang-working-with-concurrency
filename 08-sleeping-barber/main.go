@@ -55,14 +55,22 @@ func main() {
 		BarbersDoneChan: doneChan,
 		Open:            true,
 	}
-	if shop.Open {
-		color.Green("The shop is open for the day!")
-	}
+	color.Green("The shop is open for the day!")
 
 	// add barbers
 	shop.addBarber("Frank")
 
 	// start the barbershop as a goroutine
+	shopClosing := make(chan bool)
+	closed := make(chan bool)
+
+	go func() {
+		<-time.After(timeOpen)
+		shopClosing <- true
+		shop.closeShopForDay()
+		closed <- true
+
+	}()
 
 	// add clients
 
