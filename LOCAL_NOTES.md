@@ -300,6 +300,14 @@
   git add .
   ```
 
+### Defining some variables, the barber shop, and getting started with the code
+- Adding simple package to use colorized outputs: [color](https://github.com/fatih/color)
+  ```powershell
+  go get github.com/fatih/color
+  ```
+
+
+
 
 
 
