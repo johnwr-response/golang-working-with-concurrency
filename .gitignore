@@ -20,5 +20,8 @@
 # Go workspace file
 go.work
 
-# GoLang
+# GoLand
 /.idea/
+
+# Project database data
+/09-final-project/db-data/

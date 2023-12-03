@@ -338,6 +338,8 @@
   ni main.go -type file -Value "package main`n`nfunc main() {`n`n}"
   cd ..\..
   git add .
+  md db-data\postgres
+  md db-data\redis
   ```
 - Adding some packages to use
   ```powershell
@@ -350,7 +352,13 @@
   go get github.com/go-chi/chi/v5/middleware
   ```
 
-
+### Setting up our Docker development environment
+- Running docker-compose
+  ```powershell
+  docker-compose up -d 
+  ```
+- Also setup a database client (if needed)
+  - [Beekeeper Studio (Community Edition)](https://github.com/beekeeper-studio/beekeeper-studio)
 
 
 
