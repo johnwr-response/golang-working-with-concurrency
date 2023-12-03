@@ -60,10 +60,13 @@ func main() {
 	}
 
 	// add barbers
+	shop.addBarber("Frank")
 
 	// start the barbershop as a goroutine
 
 	// add clients
 
 	// block until the barbershop is closed
+
+	time.Sleep(5 * time.Second)
 }

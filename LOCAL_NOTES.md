@@ -306,6 +306,7 @@
   go get github.com/fatih/color
   ```
 
+### Adding a Barber
 
 
 
