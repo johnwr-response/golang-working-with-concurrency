@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"sync"
 	"time"
 )
@@ -56,9 +57,9 @@ func main() {
 }
 
 func dine() {
-	eatTime = 0 * time.Second
-	sleepTime = 0 * time.Second
-	thinkTime = 0 * time.Second
+	//eatTime = 0 * time.Second
+	//sleepTime = 0 * time.Second
+	//thinkTime = 0 * time.Second
 
 	// wg is the WaitGroup that keeps track of how many philosophers are still at the table. When it reaches zero,
 	// everyone is finished eating and has left. We add 5 (the number of philosophers) to this wait group
@@ -85,7 +86,8 @@ func dine() {
 	// wait for the philosophers to finish. This blocks until the wait group is 0
 	wg.Wait()
 
-	fmt.Printf("The order the philosophers finished: %v\n", orderFinished)
+	time.Sleep(sleepTime)
+	fmt.Printf("Order finished: %s.\n", strings.Join(orderFinished, ", "))
 }
 
 // diningProblem is the function fired off as a GoRoutine for each of our philosophers. It takes one philosopher, our
