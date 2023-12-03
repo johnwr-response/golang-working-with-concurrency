@@ -316,15 +316,18 @@
   ```
 - Problem solved with no mutexes, no WaitGroups, only channels. Share memory by communicating
 
-
-
-
-
-
-
-
 ## Section: Final Project - Building a Subscription Service
+
 ### What we'll cover in this section
+
+#### The final project
+- A more `real-world` use of concurrency
+- A fictitious service that allows people to buy a subscription
+- This section sets up the web application
+
+
+
+
 ### 
 ## Section: Sending Email Concurrently
 ### What we'll cover in this section
