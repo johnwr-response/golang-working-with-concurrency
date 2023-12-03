@@ -223,12 +223,32 @@
 
 ### Writing a test for our program
 
-
-
-
-
 ## Section: Channels, and another classic: The Sleeping Barber problem
 ### What we'll cover in this section
+- Introducing the [Sleeping Barber](https://en.wikipedia.org/wiki/Sleeping_barber_problem) problem
+
+#### Channels
+- A means of allowing communication to and from a GoRoutine
+- Channels can be buffered, or unbuffered
+- Once you're done with a channel, you must close it
+- Channels typically only accept a given type or interface
+
+#### The Sleeping Barber
+- A classic computer science problem introduced by Dijkstra in 1965
+- A barber goes to work in a barbershop with a waiting room with a fixed number of seats
+- If no one is in the waiting room, the barber goes to sleep
+- When a client shows up, if there are noe seats available, he or she leaves
+- If there is a seat available, and the barber is sleeping, the client wakes the barber up and gets a haircut
+- If the barber is busy, the client takes a seat and waits for his or her turn
+- Once the shop closes, no more clients are allowed in, but the barber has to stay until everyone who is waiting gets their haircut
+
+
+
+
+
+
+
+
 ### 
 ## Section: Final Project - Building a Subscription Service
 ### What we'll cover in this section
