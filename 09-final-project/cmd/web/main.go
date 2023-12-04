@@ -37,7 +37,7 @@ func main() {
 
 func initDB() *sql.DB {
 	conn := connectToDB()
-	if conn != nil {
+	if conn == nil {
 		log.Panic("can't connect to database")
 	}
 	return conn
@@ -46,6 +46,7 @@ func initDB() *sql.DB {
 func connectToDB() *sql.DB {
 	counts := 0
 
+	//dsn := "host=localhost port=5432 user=postgres password=password dbname=concurrency sslmode=disable timezone=UTC connect_timeout=5"
 	dsn := os.Getenv("DSN")
 
 	for {
@@ -64,6 +65,7 @@ func connectToDB() *sql.DB {
 		log.Println("Backing off for one second")
 		time.Sleep(1 * time.Second)
 		counts++
+
 		continue
 	}
 }

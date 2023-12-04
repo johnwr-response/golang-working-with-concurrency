@@ -361,7 +361,11 @@
   - [Beekeeper Studio (Community Edition)](https://github.com/beekeeper-studio/beekeeper-studio)
 
 ### Adding postgres
-
+### Setting up a Makefile
+- Running application with make
+  ```powershell
+  make start
+  ```
 
 
 
