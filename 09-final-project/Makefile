@@ -10,7 +10,7 @@ build:
 
 run: build
 	@echo Starting...
-	powershell $$env:DSN='${DSN}'; $$env:REDIS='${REDIS}'; ./${BINARY_NAME}
+	powershell -noprofile -command $$env:DSN='${DSN}'; $$env:REDIS='${REDIS}'; ./${BINARY_NAME}
 	@echo Started!
 
 start: run

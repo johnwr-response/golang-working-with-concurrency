@@ -379,13 +379,18 @@
 ### Adding a data package and database models
 ### Implementing the login/logout functions
 
-
-
-
-
-
 ## Section: Sending Email Concurrently
+
 ### What we'll cover in this section
+
+#### Sending Email
+- Sending email can slow things down
+- Send it in the background, using two channels
+- Adding cleanup tasks on app shutdown
+
+
+
+
 ### 
 ## Section: Registering a User and Displaying Plans
 ### What we'll cover in this section
