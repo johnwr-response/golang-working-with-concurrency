@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sync"
 	"time"
 
 	_ "github.com/jackc/pgconn"
@@ -21,22 +22,28 @@ const webPort = "8888"
 func main() {
 	// connect to the database
 	db := initDB()
-	err := db.Ping()
-	if err != nil {
-		return
-	}
 
 	// create sessions
 	session := initSession()
-	if session != nil {
-		fmt.Printf("%s\n", session.Lifetime)
-	}
+
+	// create loggers
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	// create channels
 
 	// create WaitGroup
+	wg := sync.WaitGroup{}
 
 	// set up the application config
+	app := Config{
+		Session:  session,
+		DB:       db,
+		InfoLog:  infoLog,
+		ErrorLog: errorLog,
+		Wait:     &wg,
+	}
+	fmt.Println(app)
 
 	// set up mail
 

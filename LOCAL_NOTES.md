@@ -367,7 +367,7 @@
   make start
   ```
 ### Adding sessions & Redis
-
+### Setting up the application config
 
 
 
