@@ -396,6 +396,7 @@
   ```
 
 ### Building HTML and Plain Text messages
+### Sending a message (synchronously)
 
 
 
