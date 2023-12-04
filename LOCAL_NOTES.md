@@ -377,6 +377,7 @@
 - Password is `verysecret`
 
 ### Adding a data package and database models
+### Implementing the login/logout functions
 
 
 
