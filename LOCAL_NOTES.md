@@ -398,7 +398,7 @@
 ### Building HTML and Plain Text messages
 ### Sending a message (synchronously)
 ### Getting started sending a message (asynchronously)
-
+### Writing a helper function to send email easily
 
 
 
