@@ -402,11 +402,22 @@
 ### Sending an email on incorrect login
 ### Adding cleanup tasks to the shutdown() function
 
-
-
-
 ## Section: Registering a User and Displaying Plans
+
 ### What we'll cover in this section
+
+#### Users and plans
+- Adding and validating user accounts
+- Signed URLs in email
+- Displaying the list of available subscriptions
+
+
+
+
+
+
+
+
 ### 
 ## Section: Adding Concurrency to Choosing a Plan
 ### What we'll cover in this section
