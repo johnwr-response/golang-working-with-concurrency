@@ -373,6 +373,9 @@
 ### Adding session middleware
 ### Setting up additional stub handlers and routes
 ### Implementing graceful shutdown
+### Populating the database
+- Password is `verysecret`
+
 
 
 
