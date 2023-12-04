@@ -400,7 +400,7 @@
 ### Getting started sending a message (asynchronously)
 ### Writing a helper function to send email easily
 ### Sending an email on incorrect login
-
+### Adding cleanup tasks to the shutdown() function
 
 
 
