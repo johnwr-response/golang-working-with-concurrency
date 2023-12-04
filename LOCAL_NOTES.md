@@ -388,10 +388,18 @@
 - Send it in the background, using two channels
 - Adding cleanup tasks on app shutdown
 
+### Getting started with the mailer code
+- Adding some packages to make sending email a little less painful
+  ```powershell
+  go get github.com/vanng822/go-premailer/premailer
+  go get github.com/xhit/go-simple-mail/v2
+  ```
 
 
 
-### 
+
+
+
 ## Section: Registering a User and Displaying Plans
 ### What we'll cover in this section
 ### 
