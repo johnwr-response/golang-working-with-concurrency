@@ -376,6 +376,10 @@
 ### Populating the database
 - Password is `verysecret`
 
+### Adding a data package and database models
+
+
+
 
 
 
