@@ -366,7 +366,7 @@
   ```powershell
   make start
   ```
-
+### Adding sessions & Redis
 
 
 
