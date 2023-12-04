@@ -395,6 +395,10 @@
   go get github.com/xhit/go-simple-mail/v2
   ```
 
+### Building HTML and Plain Text messages
+
+
+
 
 
 
