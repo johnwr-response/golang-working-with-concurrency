@@ -371,7 +371,7 @@
 ### Setting up a route & handler for the home page, and starting the web server
 ### Setting up templates and building a render function
 ### Adding session middleware
-
+### Setting up additional stub handlers and routes
 
 
 
