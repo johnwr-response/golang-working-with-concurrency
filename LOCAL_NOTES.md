@@ -419,6 +419,7 @@
 
 ### Starting on the handler to create a user
 ### Activating a user
+### Giving user data to our templates
 
 
 
