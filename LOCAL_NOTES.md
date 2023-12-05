@@ -428,11 +428,20 @@
 ### Writing a stub handler for choosing a plan
 
 
-
-
-
 ## Section: Adding Concurrency to Choosing a Plan
+
 ### What we'll cover in this section
+
+#### Adding concurrency
+- Generate an invoice
+- Generate a user manual as a PDF
+
+
+
+
+
+
+
 ### 
 ## Section: Testing
 ### What we'll cover in this section
