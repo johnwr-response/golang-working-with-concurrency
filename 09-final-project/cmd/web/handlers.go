@@ -169,7 +169,6 @@ func (app *Config) SubscribeToPlan(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/members/plans", http.StatusSeeOther)
 		return
 	}
-	app.InfoLog.Println(plan)
 
 	// get the user from the session
 	user, ok := app.Session.Get(r.Context(), "user").(data.User)
@@ -178,11 +177,27 @@ func (app *Config) SubscribeToPlan(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}
-	app.InfoLog.Println(user)
 
-	// generate an invoice
+	// generate an invoice and email it
+	app.Wait.Add(1)
 
-	// send an email with the invoice attached
+	go func() {
+		defer app.Wait.Done()
+
+		invoice, err := app.getInvoice(user, plan)
+		if err != nil {
+			app.ErrorChan <- err
+		}
+
+		msg := Message{
+			To:       user.Email,
+			Subject:  "Your invoice",
+			Data:     invoice,
+			Template: "invoice",
+		}
+
+		app.sendEmail(msg)
+	}()
 
 	// generate a manual
 
@@ -192,6 +207,10 @@ func (app *Config) SubscribeToPlan(w http.ResponseWriter, r *http.Request) {
 
 	// redirect
 
+}
+
+func (app *Config) getInvoice(u data.User, plan *data.Plan) (string, error) {
+	return fmt.Sprintf("%s (for %s %s)", plan.PlanAmountFormatted, u.FirstName, u.LastName), nil
 }
 
 func (app *Config) ChooseSubscription(w http.ResponseWriter, r *http.Request) {

@@ -437,7 +437,7 @@
 - Generate a user manual as a PDF
 
 ### Getting the plan id, the plan, and the user
-
+### Generating an Invoice
 
 
 
