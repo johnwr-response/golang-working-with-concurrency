@@ -411,6 +411,11 @@
 - Signed URLs in email
 - Displaying the list of available subscriptions
 
+### Adding mail templates and URL signer code
+- Adding simple package to generate signed text of any sort (used to generate signed link in email)
+  ```powershell
+  go get github.com/bwmarrin/go-alone
+  ```
 
 
 
@@ -418,7 +423,8 @@
 
 
 
-### 
+
+
 ## Section: Adding Concurrency to Choosing a Plan
 ### What we'll cover in this section
 ### 
