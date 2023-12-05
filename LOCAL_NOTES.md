@@ -438,6 +438,12 @@
 
 ### Getting the plan id, the plan, and the user
 ### Generating an Invoice
+### Generating a manual
+- Introducing [GoFPDF document generator](https://github.com/phpdave11/gofpdf/)
+  ```powershell
+  go get github.com/phpdave11/gofpdf
+  go get github.com/phpdave11/gofpdf/contrib/gofpdi
+  ```
 
 
 
