@@ -1,6 +1,7 @@
 {{template "base" .}}
 
 {{define "content" }}
+    {{$user := .User}}
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -15,12 +16,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{range index .Data "plan"}}
+                        {{range index .Data "plans"}}
                             <tr>
                                 <td>{{.PlanName}}</td>
                                 <td class="text-center">{{.PlanAmountFormatted}}/month</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary btn-sm" href="#!" onClick="selectPlan({{.ID}}, '{{.PlanName}}')"></a>
+                                    {{if and ($user.Plan) (eq $user.Plan.ID .ID) }}
+                                        <strong>Current Plan</strong>
+                                    {{else}}
+                                        <a class="btn btn-primary btn-sm" href="#!" onClick="selectPlan({{.ID}}, '{{.PlanName}}')">Select</a>
+                                    {{end}}
                                 </td>
                             </tr>
                         {{end}}
@@ -35,15 +40,15 @@
 {{define "js"}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
     <script>
-        function selectPlan(x, plan) {
+        function selectPlan(x, plans) {
             Swal.fire({
                 title: 'Subscribe',
-                html: 'Are you sure you want to subscribe to the ' + plan + '?',
+                html: 'Are you sure you want to subscribe to the ' + plans + '?',
                 showCancelButton: true,
                 confirmButtonText: 'Subscribe',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    {{/* window.location.href = '/subscribe?id' + x; */}}
+                    {{/* window.location.href = '/subscribe?id=' + x; */}}
                 }
             })
         }

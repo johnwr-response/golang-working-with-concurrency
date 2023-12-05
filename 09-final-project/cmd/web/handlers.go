@@ -182,6 +182,6 @@ func (app *Config) ChooseSubscription(w http.ResponseWriter, r *http.Request) {
 	dataMap["plans"] = plans
 
 	app.render(w, r, "plans.page.gohtml", &TemplateData{
-		DataMap: dataMap,
+		Data: dataMap,
 	})
 }
