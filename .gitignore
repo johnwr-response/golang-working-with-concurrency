@@ -25,3 +25,4 @@ go.work
 
 # Project database data
 /09-final-project/db-data/
+/09-final-project/tmp/*.pdf

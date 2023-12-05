@@ -445,6 +445,7 @@
   go get github.com/phpdave11/gofpdf/contrib/gofpdi
   ```
 
+### Trying things out, subscribing a user, updating the session, and redirecting
 
 
 
