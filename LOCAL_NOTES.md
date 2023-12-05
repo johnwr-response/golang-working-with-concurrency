@@ -447,10 +447,14 @@
 
 ### Trying things out, subscribing a user, updating the session, and redirecting
 
-
-
-
-### 
 ## Section: Testing
+
 ### What we'll cover in this section
-### 
+
+#### Testing
+- Update our models to be more testable
+- Test routes
+- Test the renderer
+- Test handlers
+
+
