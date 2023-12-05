@@ -457,4 +457,5 @@
 - Test the renderer
 - Test handlers
 
+### Setting up our tests
 
