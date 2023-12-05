@@ -420,9 +420,9 @@
 ### Starting on the handler to create a user
 ### Activating a user
 ### Giving user data to our templates
-
-
-
+### Displaying the Subscription Plans page
+- Introducing Sweetalert2: A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes: [Sweetalert2](https://sweetalert2.github.io/)
+- Also introducing JSDelivr: A free CDN for open source projects: [JSDelivr](https://www.jsdelivr.com/)
 
 
 
