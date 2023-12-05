@@ -425,7 +425,7 @@
 - Also introducing JSDelivr: A free CDN for open source projects: [JSDelivr](https://www.jsdelivr.com/)
 
 ### Adding a route and trying things out for the "Plans" page
-
+### Writing a stub handler for choosing a plan
 
 
 
