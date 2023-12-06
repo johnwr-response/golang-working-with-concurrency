@@ -458,4 +458,9 @@
 - Test handlers
 
 ### Setting up our tests
+### Testing Routes
+  ```powershell
+  go test -v .\cmd\web\.
+  ```
+
 
