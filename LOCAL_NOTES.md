@@ -463,4 +463,4 @@
   go test -v .\cmd\web\.
   ```
 
-
+### Testing the Renderer
