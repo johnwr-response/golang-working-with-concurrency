@@ -467,6 +467,11 @@
 ### Modifying the data package to make it testable
 ### Implementing the PlanTest type
 ### Getting started testing Handlers
-
+### Testing the Login Handler
+- To find the coverage of your code, run these tools
+  ```powershell
+  go test -coverprofile=coverageout .\cmd\web\.
+  go tool cover -html=coverageout
+  ```
 
 

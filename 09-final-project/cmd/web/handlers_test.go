@@ -4,6 +4,7 @@ import (
 	"final-project/data"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"strings"
 	"testing"
 )
@@ -66,6 +67,32 @@ func TestConfig_Home(t *testing.T) {
 
 	if rr.Code != http.StatusOK {
 		t.Error("failed; expected 200 but got", rr.Code)
+	}
+
+}
+
+func TestConfig_PostLoginPage(t *testing.T) {
+	pathToTemplates = "./templates"
+
+	postedData := url.Values{
+		"email":    {"admin@example.com"},
+		"password": {"abc123abc123abc123abc123"},
+	}
+
+	rr := httptest.NewRecorder()
+	req, _ := http.NewRequest("POST", "/login", strings.NewReader(postedData.Encode()))
+	ctx := getCtx(req)
+	req = req.WithContext(ctx)
+
+	handler := http.HandlerFunc(testApp.PostLoginPage)
+	handler.ServeHTTP(rr, req)
+
+	if rr.Code != http.StatusSeeOther {
+		t.Error("wrong code returned")
+	}
+
+	if !testApp.Session.Exists(ctx, "userID") {
+		t.Error("did not find userID in session")
 	}
 
 }
