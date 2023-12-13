@@ -474,4 +474,6 @@
   go tool cover -html=coverageout
   ```
 
+### Testing a handler that uses concurrency
 
+## Done
